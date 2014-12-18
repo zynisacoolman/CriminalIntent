@@ -1,5 +1,7 @@
 package com.example.zyn.criminalintent;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.UUID;
 
@@ -9,7 +11,7 @@ import java.util.UUID;
 public class Crime {
     private UUID mID;
     private String mTitle;
-    private Date mDate;
+    private Date mDate=new Date();
     private boolean mSolved;
 
     public UUID getID() {
@@ -34,9 +36,5 @@ public class Crime {
 
     public Date getDate() {
         return mDate;
-    }
-
-    public void setDate(Date date) {
-        mDate = date;
     }
 }
