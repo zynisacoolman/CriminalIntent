@@ -37,4 +37,8 @@ public class Crime {
     public Date getDate() {
         return mDate;
     }
+    @Override
+    public String toString(){
+        return mTitle;
+    }
 }

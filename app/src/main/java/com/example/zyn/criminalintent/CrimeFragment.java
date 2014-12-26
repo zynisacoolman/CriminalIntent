@@ -13,10 +13,14 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import java.util.UUID;
+
 /**
  * Created by zyn on 2014/12/17.
  */
 public class CrimeFragment extends Fragment{
+    public static final String EXTRA_CRIME_ID =
+            "com.bignerdranch.android.criminalintent.crime.id";
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
@@ -24,12 +28,18 @@ public class CrimeFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        mCrime=new Crime();
+//        mCrime=new Crime();
+        UUID crimeId=(UUID)getActivity().getIntent()
+                .getSerializableExtra(EXTRA_CRIME_ID);
+
+        mCrime=CrimeLab.get(getActivity()).getCrime(crimeId);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup parent,Bundle savedInstanceState){
         View v=inflater.inflate(R.layout.fragment_crime,parent,false);
+        //接受数据
+
 
         mTitleField=(EditText)v.findViewById(R.id.crime_title);
         mTitleField.addTextChangedListener(new TextWatcher(){
